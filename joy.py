@@ -9,6 +9,10 @@ class Joystick_L:
         pygame.joystick.init()
         numJoys = pygame.joystick.get_count()
         self.joyInitL = False
+        self.x = 0
+        self.y = 0
+        self.rad = 0
+        self.throttle = 0
         if (numJoys > 0):
             self.joystick = pygame.joystick.Joystick(0)
             self.joystick.init()
@@ -16,14 +20,12 @@ class Joystick_L:
         else:
             print("No left joystick found")
             self.joyInitL = False
+            self.numButtons = 0
             return
 
         self.numButtons = self.joystick.get_numbuttons()
         self.buttons = [0]*self.numButtons
-        self.x = 0
-        self.y = 0
-        self.rad = 0
-        self.throttle = 0
+       
      
         pygame.font.init()
         self.font = pygame.font.Font(pygame.font.get_default_font(),32)
@@ -50,7 +52,7 @@ class Joystick_L:
         
 
         
-    def draw(self,surface):
+    ''' def draw(self,surface):
         r = 200
         w = surface.get_width()
         h = surface.get_height()
@@ -67,7 +69,7 @@ class Joystick_L:
         y = int(round(h/2+self.y*r))
         pygame.draw.aaline(surface,(128,128,128),(w/2,h/2),(x,y),1)
         pygame.draw.circle(surface,(0,0,0),(x,y),8,4)
-        pygame.draw.circle(surface,(0,255,255),(w/2,h/2),r,2)
+        pygame.draw.circle(surface,(0,255,255),(w/2,h/2),r,2) '''
 
 class Joystick_R:
 
@@ -75,6 +77,10 @@ class Joystick_R:
         pygame.joystick.init()
         numJoys = pygame.joystick.get_count()
         self.joyInitR = False
+        self.x = 0
+        self.y = 0
+        self.rad = 0
+        self.throttle = 0
         if (numJoys > 1):
             self.joystick = pygame.joystick.Joystick(1)
             self.joystick.init()
@@ -82,14 +88,12 @@ class Joystick_R:
         else:
             print("No right joystick found")
             self.joyInitR = False
+            self.numButtons = 0
             return
 
         self.numButtons = self.joystick.get_numbuttons()
         self.buttons = [0]*self.numButtons
-        self.x = 0
-        self.y = 0
-        self.rad = 0
-        self.throttle = 0
+        
      
         pygame.font.init()
         self.font = pygame.font.Font(pygame.font.get_default_font(),32)
@@ -116,7 +120,7 @@ class Joystick_R:
         
 
         
-    def draw(self,surface):
+    ''' def draw(self,surface):
         r = 200
         w = surface.get_width()
         h = surface.get_height()
@@ -134,4 +138,4 @@ class Joystick_R:
         y = int(round(h/2+self.y*r))
         pygame.draw.aaline(surface,(128,0,0),(w/2,h/2),(x,y),1)
         pygame.draw.circle(surface,(0,0,0),(x,y),8,4)
-        pygame.draw.circle(surface,(0,255,255),(w/2,h/2),r,2)
+        pygame.draw.circle(surface,(0,255,255),(w/2,h/2),r,2) '''
