@@ -23,6 +23,7 @@ class Joystick_L:
         self.x = 0
         self.y = 0
         self.rad = 0
+        self.throttle = 0
      
         pygame.font.init()
         self.font = pygame.font.Font(pygame.font.get_default_font(),32)
@@ -88,6 +89,7 @@ class Joystick_R:
         self.x = 0
         self.y = 0
         self.rad = 0
+        self.throttle = 0
      
         pygame.font.init()
         self.font = pygame.font.Font(pygame.font.get_default_font(),32)
@@ -126,7 +128,7 @@ class Joystick_R:
                 col = (64,0,64)
             
             text = self.font.render(str(i),1,col)
-            surface.blit(text,text.get_rect(centerx=w*(i+1)/(self.numButtons+1),centery=(h/2)-60)
+            surface.blit(text,text.get_rect(centerx=w*(i+1)/(self.numButtons+1),centery=h/2-60))
         
         x = int(round(w/2+self.x*r))
         y = int(round(h/2+self.y*r))
