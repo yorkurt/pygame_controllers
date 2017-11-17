@@ -32,6 +32,7 @@ class Main:
             self.compute()
             self.draw(self.screen)
             self.clock.tick(self.FPS)
+            
             leftX = pygame.joystick.Joystick(0).get_axis(0)
             leftY = -1 * pygame.joystick.Joystick(0).get_axis(1)
             #rightX = pygame.joystick.Joystick(1).get_axis(0)
