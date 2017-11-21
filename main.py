@@ -27,6 +27,29 @@ class Main:
             self.draw()
             self.clock.tick(self.FPS)
 
+            leftX = pygame.joystick.Joystick(0).get_axis(0)
+            leftY = -1 * pygame.joystick.Joystick(0).get_axis(1)
+            #rightX = pygame.joystick.Joystick(1).get_axis(0)
+            #rightY = -1 * pygame.joystick.Joystick(1).get_axis(1)
+
+            #handle buttons 
+            for event in pygame.event.get(pygame.JOYBUTTONUP): #event handling loop
+                #handle mode switching - buttons 8/9 on both sticks
+                print(event)
+                if (event.button == 7): #button 8 increases mode
+                    if (self.mode == 3):
+                        self.mode = 1
+                    else:
+                        self.mode = self.mode + 1
+                    print("Mode is now: " + str(self.mode))
+                if (event.button == 8): #button 9 decreases mode
+                    if (self.mode == 1):
+                        self.mode = 3
+                    else:
+                        self.mode = self.mode - 1
+                    print("Mode is now: " + str(self.mode))
+
+
     def getInput(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
