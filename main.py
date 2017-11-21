@@ -29,8 +29,8 @@ class Main:
 
             leftX = pygame.joystick.Joystick(0).get_axis(0)
             leftY = -1 * pygame.joystick.Joystick(0).get_axis(1)
-            #rightX = pygame.joystick.Joystick(1).get_axis(0)
-            #rightY = -1 * pygame.joystick.Joystick(1).get_axis(1)
+            rightX = pygame.joystick.Joystick(1).get_axis(2)
+            rightY = -1 * pygame.joystick.Joystick(1).get_axis(3)
 
             #handle buttons 
             for event in pygame.event.get(pygame.JOYBUTTONUP): #event handling loop
