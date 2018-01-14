@@ -15,8 +15,11 @@ class Main:
         pygame.font.init()
         self.font = pygame.font.Font(pygame.font.get_default_font(),32)
 
+	
+	
+
     def setupGame(self):
-        self.clock = pygame.time.Clock()
+        self.clock = pygame.time.Clock()	
         self.FPS = 60
         self.joy = joy.Joystick_L()
         self.joy2 = joy.Joystick_R()
@@ -24,31 +27,44 @@ class Main:
         self.objects.append(self.joy)
         self.objects.append(self.joy2)
 
+	l = self.objects[0].get_numbuttons()
+	self.buttonArr1 = [0 for i in range(l)]
+
     def runGame(self):
         self.gameRunning = 1
 
+
         while self.gameRunning:
+	    buttonArr1 = [0 for i in range(len(buttonArr1))]
+
             self.getInput()
             self.compute()
             self.draw(self.screen)
             self.clock.tick(self.FPS)
             
-            self.leftX = pygame.joystick.Joystick(0).get_axis(0)
-            self.leftY = -1 * pygame.joystick.Joystick(0).get_axis(1)
+            #self.leftX = pygame.joystick.Joystick(0).get_axis(0)
+            #self.leftY = -1 * pygame.joystick.Joystick(0).get_axis(1)
             #self.rightX = pygame.joystick.Joystick(1).get_axis(0)
             #self.rightY = -1 * pygame.joystick.Joystick(1).get_axis(1)
+
+            self.leftX = self.objects[0].get_axis(0)
+	    self.leftY = self.objects[0].get_axis(1)
+	    #self.rightX = self.objects[1].get_axis(0)
+	    #self.rightY = self.objects[1].get_axis(1)
 
             #handle buttons 
             for event in pygame.event.get(pygame.JOYBUTTONUP): #event handling loop
                 #handle mode switching - buttons 8/9 on both sticks
                 print(event)
                 if (event.button == 7): #button 8 increases mode
+		    buttonArr1[7] = 1
                     if (self.mode == 3):
                         self.mode = 1
                     else:
                         self.mode = self.mode + 1
                     print("Mode is now: " + str(self.mode))
                 if (event.button == 8): #button 9 decreases mode
+		    buttonArr1[8] = 1
                     if (self.mode == 1):
                         self.mode = 3
                     else:
