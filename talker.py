@@ -1,14 +1,19 @@
+#!/usr/bin/env python
+
 import rospy
-from std_msgs.msg import String, Float64MultiArray
-import main
+from std_msgs.msg import String#, Float64MultiArray
+from controller.msg import FloatList
+#import main
 
 def talker():
-    float64[] axes = [main.leftX,main.leftY,main.rightX,main.rightY]
-    pub = rospy.Publisher('controls', Float64MultiArray, queue_size=10)
+    #float64[4] axes = [main.leftX,main.leftY,main.rightX,main.rightY]
+    pub = rospy.Publisher('controls', FloatList, queue_size=10)
     rospy.init_node('controller_base', anonymous=True)
     rate = rospy.Rate(10) # 10hz
+    axes = FloatList()
     while not rospy.is_shutdown():
-        axes = [main.leftX,main.leftY,main.rightX,main.rightY]
+        #axes.data = [main.leftX,main.leftY,main.rightX,main.rightY]
+	axes.data = [1,-1,0,1]
         rospy.loginfo(axes)
         pub.publish(axes)
         rate.sleep()
